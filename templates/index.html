@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie | AI Learning Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🎓
+            </div>
+
+            <div>
+                <h1>EduGenie</h1>
+                <span>AI Learning Assistant</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="nav-item active"
+                    onclick="showSection('dashboard', this)">
+                🏠
+                <span>Dashboard</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('tutor', this)">
+                🤖
+                <span>AI Tutor</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('notes', this)">
+                📚
+                <span>Study Notes</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('quiz', this)">
+                📝
+                <span>Quiz Generator</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('flashcards', this)">
+                🧠
+                <span>Flashcards</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('references', this)">
+                🔗
+                <span>References</span>
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('progress', this)">
+                📊
+                <span>Progress</span>
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item">
+                ⚙️
+                <span>Settings</span>
+            </button>
+
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    Y
+                </div>
+
+                <div>
+                    <strong>Student</strong>
+                    <small>Learning Mode</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
+                <p>
+                    Learn smarter with AI 🚀
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="icon-button">
+                    🔔
+                </button>
+
+                <button class="avatar">
+                    Y
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             DASHBOARD
+             ========================================= -->
+
+        <section id="dashboard"
+                 class="section active-section">
+
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <span class="welcome-label">
+                        👋 Welcome back!
+                    </span>
+
+
+                    <h2>
+                        What do you want to learn today?
+                    </h2>
+
+
+                    <p>
+                        Ask questions, create notes,
+                        generate quizzes and improve
+                        your knowledge with EduGenie.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-icon">
+                    🎓
+                </div>
+
+            </div>
+
+
+
+            <!-- FEATURE CARDS -->
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card"
+                     onclick="showSectionById('tutor')">
+
+                    <div class="feature-icon tutor">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI Tutor
+                    </h3>
+
+                    <p>
+                        Ask questions and get
+                        personalized explanations.
+                    </p>
+
+                    <span>
+                        Start learning →
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card"
+                     onclick="showSectionById('notes')">
+
+                    <div class="feature-icon notes">
+                        📚
+                    </div>
+
+                    <h3>
+                        Study Notes
+                    </h3>
+
+                    <p>
+                        Generate simple and
+                        structured study notes.
+                    </p>
+
+                    <span>
+                        Create notes →
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card"
+                     onclick="showSectionById('quiz')">
+
+                    <div class="feature-icon quiz">
+                        📝
+                    </div>
+
+                    <h3>
+                        Quiz Generator
+                    </h3>
+
+                    <p>
+                        Test your knowledge with
+                        interactive questions.
+                    </p>
+
+                    <span>
+                        Take a quiz →
+                    </span>
+
+                </div>
+
+
+
+                <div class="feature-card"
+                     onclick="showSectionById('flashcards')">
+
+                    <div class="feature-icon cards">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Flashcards
+                    </h3>
+
+                    <p>
+                        Create quick revision
+                        cards for your subjects.
+                    </p>
+
+                    <span>
+                        Revise now →
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK ASK -->
+
+            <div class="quick-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h3>
+                            💡 Quick Ask
+                        </h3>
+
+                        <p>
+                            Ask EduGenie anything about your studies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-input">
+
+                    <input
+                        id="dashboardQuestion"
+                        type="text"
+                        placeholder="Example: Explain TCP three-way handshake..."
+                    >
+
+
+                    <button onclick="askFromDashboard()">
+                        Ask AI →
+                    </button>
+
+                </div>
+
+
+                <div id="dashboardAnswer"
+                     class="answer-box hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             AI TUTOR
+             ========================================= -->
+
+        <section id="tutor"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    🤖
+                </div>
+
+
+                <h2>
+                    AI Tutor
+                </h2>
+
+
+                <p>
+                    Ask EduGenie any academic question
+                    and receive a clear explanation.
+                </p>
+
+
+                <textarea
+                    id="tutorQuestion"
+                    placeholder="Ask your question here..."
+                ></textarea>
+
+
+                <div class="controls">
+
+                    <select id="difficulty">
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+
+                    <button onclick="askTutor()">
+                        🤖 Ask EduGenie
+                    </button>
+
+                </div>
+
+
+                <div id="tutorAnswer"
+                     class="answer-box hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             STUDY NOTES
+             ========================================= -->
+
+        <section id="notes"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    📚
+                </div>
+
+
+                <h2>
+                    Study Notes
+                </h2>
+
+
+                <p>
+                    Enter a topic and EduGenie will create
+                    structured study notes.
+                </p>
+
+
+                <input
+                    id="notesTopic"
+                    class="text-input"
+                    placeholder="Example: Operating System"
+                >
+
+
+                <button onclick="generateNotes()">
+                    📚 Generate Study Notes
+                </button>
+
+
+                <div id="notesAnswer"
+                     class="answer-box hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             QUIZ GENERATOR
+             ========================================= -->
+
+        <section id="quiz"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    📝
+                </div>
+
+
+                <h2>
+                    Quiz Generator
+                </h2>
+
+
+                <p>
+                    Practice your knowledge with
+                    interactive quizzes.
+                </p>
+
+
+
+                <!-- QUIZ SETUP -->
+
+                <div id="quizSetup">
+
+
+                    <input
+                        id="quizTopic"
+                        class="text-input"
+                        placeholder="Enter topic e.g. Computer Networks"
+                    >
+
+
+                    <div class="controls">
+
+
+                        <select id="quizDifficulty">
+
+                            <option value="Easy">
+                                Easy
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Hard">
+                                Hard
+                            </option>
+
+                        </select>
+
+
+
+                        <select id="quizCount">
+
+                            <option value="5">
+                                5 Questions
+                            </option>
+
+                            <option value="10">
+                                10 Questions
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button onclick="startQuiz()">
+                        🚀 Start Quiz
+                    </button>
+
+                </div>
+
+
+
+                <!-- QUIZ AREA -->
+
+                <div id="quizArea"
+                     class="hidden">
+
+
+                    <div class="quiz-header">
+
+                        <span id="quizProgress">
+                            Question 1 of 5
+                        </span>
+
+
+                        <span id="quizScore">
+                            Score: 0
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="quiz-question">
+
+                        <h3 id="questionText">
+                            Question appears here
+                        </h3>
+
+                    </div>
+
+
+
+                    <div id="optionsContainer"
+                         class="quiz-options">
+                    </div>
+
+
+
+                    <button
+                        id="nextQuestionBtn"
+                        onclick="nextQuestion()"
+                        class="next-button"
+                        disabled>
+
+                        Next →
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- QUIZ RESULT -->
+
+                <div id="quizResult"
+                     class="quiz-result hidden">
+
+
+                    <div class="result-icon">
+                        🎉
+                    </div>
+
+
+                    <h2>
+                        Quiz Completed!
+                    </h2>
+
+
+                    <p id="finalScore">
+                        Your score
+                    </p>
+
+
+                    <button onclick="restartQuiz()">
+                        🔄 Try Again
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             FLASHCARDS
+             ========================================= -->
+
+        <section id="flashcards"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    🧠
+                </div>
+
+
+                <h2>
+                    Flashcards
+                </h2>
+
+
+                <p>
+                    Create quick revision flashcards
+                    from any topic.
+                </p>
+
+
+                <input
+                    id="flashcardTopic"
+                    class="text-input"
+                    placeholder="Example: Java OOP Concepts"
+                >
+
+
+                <button onclick="generateFlashcards()">
+                    🧠 Create Flashcards
+                </button>
+
+
+                <div id="flashcardAnswer"
+                     class="answer-box hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             REFERENCES
+             ========================================= -->
+
+        <section id="references"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    🔗
+                </div>
+
+
+                <h2>
+                    Learning References
+                </h2>
+
+
+                <p>
+                    Get useful learning topics and
+                    resources for further study.
+                </p>
+
+
+                <input
+                    id="referenceTopic"
+                    class="text-input"
+                    placeholder="Example: Python Programming"
+                >
+
+
+                <button onclick="generateReferences()">
+                    🔗 Find Learning Resources
+                </button>
+
+
+                <div id="referenceAnswer"
+                     class="answer-box hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             PROGRESS
+             ========================================= -->
+
+        <section id="progress"
+                 class="section">
+
+            <div class="page-card">
+
+                <div class="page-icon">
+                    📊
+                </div>
+
+
+                <h2>
+                    Learning Progress
+                </h2>
+
+
+                <p>
+                    Track your EduGenie learning activity.
+                </p>
+
+
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <strong id="questionsCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Questions Asked
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <strong id="quizCountProgress">
+                            0
+                        </strong>
+
+                        <span>
+                            Quizzes Completed
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <strong id="notesCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Study Notes
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <strong id="learningStreak">
+                            1
+                        </strong>
+
+                        <span>
+                            Learning Streak
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
